@@ -1,5 +1,6 @@
 import discord
-from config import token
+
+token = "OTU4MDM1NDI0NzYzMzE0MjI3.YkHeBA.HqMlA7gI7HaayXkLsCLddmOdaog"
 
 class Kima(discord.Client):
     async def on_ready(self):
