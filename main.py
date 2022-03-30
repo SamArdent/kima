@@ -8,6 +8,5 @@ class Kima(discord.Client):
     async def on_message(self, message):
         print(f'Message from {message.author}: {message.content}')
 
-
 kima = Kima()
 kima.run(token)
