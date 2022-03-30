@@ -1,6 +1,7 @@
 import discord
+import os
 
-token = "OTU4MDM1NDI0NzYzMzE0MjI3.YkHeBA.HqMlA7gI7HaayXkLsCLddmOdaog"
+TOKEN = os.environ.get('TOKEN')
 
 class Kima(discord.Client):
     async def on_ready(self):
@@ -10,4 +11,4 @@ class Kima(discord.Client):
         print(f'Message from {message.author}: {message.content}')
 
 kima = Kima()
-kima.run(token)
+kima.run(TOKEN)
