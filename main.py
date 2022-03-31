@@ -3,12 +3,14 @@ import os
 
 TOKEN = os.environ.get('TOKEN')
 
-class Kima(discord.Client):
-    async def on_ready(self):
-        print(f'Logged on as {self.user}!')
+Kima = discord.Bot()
 
-    async def on_message(self, message):
-        print(f'Message from {message.author}: {message.content}')
+@Kima.event
+async def on_ready():
+    print(f"We have logged in as {Kima.user}")
 
-kima = Kima()
-kima.run(TOKEN)
+@Kima.slash_command()
+async def hello(ctx):
+    await ctx.respond("Hello!")
+
+Kima.run(TOKEN)
