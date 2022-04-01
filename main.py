@@ -46,9 +46,9 @@ async def on_ready():
 
 
 @Kima.slash_command()
-async def roll(ctx, dice):
-    print(dice)
-    output = diceParser(dice)
+async def dice(ctx, input):
+    print(input)
+    output = diceParser(input)
     await ctx.respond(output)
 
 TOKEN = os.environ.get('TOKEN')
