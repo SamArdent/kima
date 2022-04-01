@@ -6,7 +6,7 @@ Kima = discord.Bot()
 
 
 def diceParser(dice):
-    error = "Error. Please make sure you enter the format `/roll [1-750]d[1-100000]`."
+    error = "Error. Please make sure you enter the format `/roll [1-500]d[1-100000]`."
     modifier = 0
     try:
         amountDomain = dice.split('d')
@@ -23,7 +23,7 @@ def diceParser(dice):
         else:
             domain = int(amountDomain[1])
 
-        if amount < 1 or domain < 1 or amount > 750 or domain > 100000:
+        if amount < 1 or domain < 1 or amount > 500 or domain > 100000:
             return error
 
         rolls = []
