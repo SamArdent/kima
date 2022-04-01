@@ -28,8 +28,8 @@ def diceParser(dice):
 
         rolls = []
         for diceToRoll in range(amount):
-            dice = random.randint(1, domain)
-            rolls.append(dice)
+            result = random.randint(1, domain)
+            rolls.append(result)
         total = sum(rolls) + modifier
         response = f"Your rolled: {dice}\n" \
                    f"Your rolls are: {rolls}\n" \
