@@ -34,7 +34,7 @@ def diceParser(dice):
             result = random.randint(1, domain)
             rolls.append(result)
         total = sum(rolls) + modifier
-        response = f"You rolled: {dice}\n" \
+        response = f"You rolled {amount}d{domain}{modifier}\n" \
                    f"Your rolls are: {rolls}\n" \
                    f"Your total is: {total}"
         return response
