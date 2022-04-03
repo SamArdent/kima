@@ -7,14 +7,6 @@ MODMAIL_CHANNEL_ID = os.environ.get('MODMAIL_CHANNEL_ID')
 
 Kima = discord.Bot()
 
-def checkChar(check):
-    error = "Character limit hit. The message being sent must be less than 2000 characters."
-    length = len(check)
-    if length > 2000:
-        return charlimit
-    else:
-        return error
-
 
 def diceParser(dice):
     error = "Error. Please make sure you follow the format `/roll [1-200]d[1-100000]`."
@@ -60,17 +52,13 @@ async def on_ready():
 async def dice(ctx, input):
     print(input)
     output = diceParser(input)
-    await ctx.respond(checkChar(output))
+    await ctx.respond(output)
 
 @Kima.event
 async def on_message(ctx):
     if ctx.channel.type == discord.ChannelType.private:
         channel = await Kima.fetch_channel(MODMAIL_CHANNEL_ID)
-        if len(ctx.content) > 2000:
-            await ctx.respond("Character limit hit. The message being sent must be less than 2000 characters.")
-
-        else:
-            await channel.send(checkChar(ctx.content))
+        await channel.send(ctx.content)
 
 
 Kima.run(TOKEN)
