@@ -66,7 +66,11 @@ async def dice(ctx, input):
 async def on_message(ctx):
     if ctx.channel.type == discord.ChannelType.private:
         channel = await Kima.fetch_channel(MODMAIL_CHANNEL_ID)
-        await channel.send(checkChar(ctx.content))
+        if len(ctx.content) > 2000:
+            await ctx.respond("Character limit hit. The message being sent must be less than 2000 characters.")
+
+        else:
+            await channel.send(checkChar(ctx.content))
 
 
 Kima.run(TOKEN)
