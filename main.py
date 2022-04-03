@@ -2,11 +2,14 @@ import discord
 import random
 import os
 
+TOKEN = os.environ.get('TOKEN')
+MODMAIL_CHANNEL_ID = os.environ.get('MODMAIL_CHANNEL_ID')
+
 Kima = discord.Bot()
 
 
 def diceParser(dice):
-    error = "Error. Please make sure you enter the format `/roll [1-200]d[1-100000]`."
+    error = "Error. Please make sure you follow the format `/roll [1-200]d[1-100000]`."
     modifier = 0
     try:
         amountDomain = dice.split('d')
@@ -31,7 +34,7 @@ def diceParser(dice):
             result = random.randint(1, domain)
             rolls.append(result)
         total = sum(rolls) + modifier
-        response = f"Your rolled: {dice}\n" \
+        response = f"You rolled: {dice}\n" \
                    f"Your rolls are: {rolls}\n" \
                    f"Your total is: {total}"
         return response
@@ -51,5 +54,11 @@ async def dice(ctx, input):
     output = diceParser(input)
     await ctx.respond(output)
 
-TOKEN = os.environ.get('TOKEN')
+@Kima.event
+async def on_message(ctx):
+    if ctx.channel.type == discord.ChannelType.private:
+        channel = await Kima.fetch_channel(MODMAIL_CHANNEL_ID)
+        await channel.send(ctx.content)
+
+
 Kima.run(TOKEN)
