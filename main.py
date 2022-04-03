@@ -9,7 +9,7 @@ Kima = discord.Bot()
 
 
 def diceParser(dice):
-    error = "Error. Please make sure you follow the format `/roll [1-200]d[1-100000][+ or -][number]`."
+    error = "Error. Please make sure you follow the format `/dice [1-200]d[1-100000][+ or -][number]`."
     modifier = 0
     symbol = "+"
     try:
@@ -60,7 +60,7 @@ async def dice(ctx, input):
 async def on_message(ctx):
     if ctx.channel.type == discord.ChannelType.private:
         channel = await Kima.fetch_channel(MODMAIL_CHANNEL_ID)
-        await channel.send(ctx.content)
+        await channel.send(f"`{ctx.content}`")
 
 
 Kima.run(TOKEN)
