@@ -10,18 +10,18 @@ Kima = discord.Bot()
 
 def diceParser(dice):
     error = "Error. Please make sure you follow the format `/roll [1-200]d[1-100000][+ or -][number]`."
-    modifier = ""
-    symbol = ""
+    modifier = 0
+    symbol = "+"
     try:
         amountDomain = dice.split('d')
         amount = int(dice.split('d')[0])
 
         if "+" in dice:
-            symbol = "+"
             modifier = int(dice.split('+')[1])
             domain = int(dice.split('d')[1].split('+')[0])
 
         elif "-" in dice:
+            symbol = ""
             modifier = int(dice.split('-')[1]) * -1
             domain = int(dice.split('d')[1].split('-')[0])
 
