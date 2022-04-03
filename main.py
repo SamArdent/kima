@@ -16,14 +16,17 @@ def diceParser(dice):
         amount = int(dice.split('d')[0])
 
         if "+" in dice:
+            symbol = "+"
             modifier = int(dice.split('+')[1])
             domain = int(dice.split('d')[1].split('+')[0])
 
         elif "-" in dice:
+            symbol = "-"
             modifier = int(dice.split('-')[1]) * -1
             domain = int(dice.split('d')[1].split('-')[0])
 
         else:
+            symbol = ""
             domain = int(amountDomain[1])
 
         if amount < 1 or domain < 1 or amount > 200 or domain > 100000:
@@ -34,7 +37,7 @@ def diceParser(dice):
             result = random.randint(1, domain)
             rolls.append(result)
         total = sum(rolls) + modifier
-        response = f"You rolled {amount}d{domain}{modifier}\n" \
+        response = f"You rolled {amount}d{domain}{symbol}{modifier}\n" \
                    f"Your rolls are: {rolls}\n" \
                    f"Your total is: {total}"
         return response
