@@ -1,1 +1,1 @@
-Tess' bot for use on Nerdcord
+Sam's bot for use on Nerdcord
